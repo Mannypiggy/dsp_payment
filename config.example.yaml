@@ -1,0 +1,70 @@
+# ============================================================
+# DSP 月度付款申请助手 — 配置示例（脱敏占位）
+# 复制为 config.local.yaml 或 config.yaml 后填入真实值。
+# 真实付款方/收款方/邮箱/银行信息不要提交到 git。
+# ============================================================
+
+# KPI 目标（页面可修改）
+kpi:
+  total_roas: 6.5
+  consideration_cpdpv: 0.68
+  conversion_roas: 8.8
+  diff_tolerance: 0.02
+
+# 月份规则
+month:
+  peak_months: [7, 10, 11, 12]   # 大促月
+  peak_label: "大促月份"
+  normal_label: "其他月份"
+
+# 付款相关
+payment:
+  rebate_rate: 0.08               # 返点比例 8%
+  payment_cycle_workdays: 20      # 付款周期（个工作日）
+
+  payer:
+    name: "YOUR_PAYER_NAME"
+
+  payee:
+    name: "YOUR_PAYEE_NAME"
+    bank: "YOUR_BANK"
+    account: "YOUR_ACCOUNT"
+    bank_address: "YOUR_BANK_ADDRESS"
+    swift: "YOUR_SWIFT"
+    bank_code: "YOUR_BANK_CODE"
+
+# 邮件
+email:
+  to:
+    - recipient@example.com
+  cc:
+    - cc@example.com
+
+# DSP花费明细「核算维度」「店铺品牌」列（单一标签值，不做 Order→Store 推导）
+store:
+  default_store: "Amazon美国站哥贝尔店"
+  brand: "HUION"
+  # DSP花费明细「核算维度」列的店铺（按 F 列合并区域从上到下依次填写）
+  stores:
+    - "Amazon美国站哥贝尔店"
+    - "Amazon美国站DeePaint店"
+
+# 店铺花费占比：店铺名称与固定比例来自模板自身，程序不修改（禁止改比例）
+spend_ratio:
+  applicant: "余曼妮"
+
+# 邮件截图（最终阶段）：用 Excel COM 对最终 Excel 指定区域截图。
+# range 留空 = 自动定位；仅当模板变化导致定位错误时手工填写（如 "A3:N6"）。
+screenshots:
+  dsp:
+    sheet: "DSP+SA"     # 自动定位 Strategy → 总计
+    range: ""
+  onsite:
+    sheet: "DSP+SA"     # 自动定位 类型 → 总计
+    range: ""
+  kpi:
+    sheet: ""           # 空 = KPI 文件第一个 sheet
+    range: ""           # 空 = UsedRange
+  spend_ratio:
+    sheet: ""           # 空 = 店铺占比文件第一个 sheet
+    range: "A1:G7"      # 只截主表（标题+表头+店铺+合计），不含右侧说明/下方备注/空白

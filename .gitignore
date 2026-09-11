@@ -1,0 +1,14 @@
+# 敏感配置（真实付款/银行/邮箱信息，禁止提交）
+config.yaml
+config.local.yaml
+.env
+
+# 运行时产物
+output/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# 提取的临时数据
+_已推广*.xlsx
+_店铺占比*.xlsx
